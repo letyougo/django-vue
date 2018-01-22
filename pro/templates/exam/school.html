@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #app {
+            opacity: 0
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: "Microsoft YaHei";
+            color: #ffffff;
+        }
+   .logo{
+            background: url('/static/img/loading-spokes.svg');
+        }
+
+        #wrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #1ab394;
+        }
+
+        #loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+
+        window.onload = function () {
+            document.getElementById('wrapper').style.display = 'none'
+            document.getElementById('app').style.opacity = 1
+        }
+    </script>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no">
+
+<body>
+<span class="logo"></span>
+<div id="app"></div>
+<div id="wrapper">
+    <div id="loading">
+        <img src="/static/img/loading-spokes.svg" width="64" height="64">
+        <p class="h1 mt2 mb0">正在加载中...</p>
+
+    </div>
+</div>
+
+</body>
+<script>
+    window.school = {
+        'id': '{{ user.school.id }}',
+        'name': '{{ user.school.name }}'
+    }
+    window.user = {
+        'id': '{{ user.id }}',
+        'name': '{{ user.username }}'
+    }
+    window.type = {
+        center: false,
+        office: false,
+        school: true
+    }
+
+    location.hash = 'teacher_list?id=' + window.school.id
+</script>
+
+
+<script src="/static/exam/js/manifest.js"></script>
+<script src="http://oss.sheetjs.com/js-xlsx/xlsx.full.min.js"></script>
+<script  id="vender"></script>
+<script id="school"></script>
+<script>
+    document.getElementById('vender').src="/static/exam/js/vendor.js"
+    document.getElementById('vender').onload = function () {
+            document.getElementById('school').src  = '/static/exam/js/school.js'
+    }
+</script>
+    <link href="/static/exam/css/school.css" rel="stylesheet">
+    <link href="/static/iconfont/iconfont.css" rel="stylesheet">
+</html>

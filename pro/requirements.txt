@@ -35,7 +35,7 @@ ipython-genutils==0.2.0
 itsdangerous==0.24
 itypes==1.1.0
 jedi==0.11.0
-Jinja2==2.10
+Jinja2==2.11.3
 jinja2-time==0.2.0
 lxml==4.1.1
 MarkupSafe==1.0
